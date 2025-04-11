@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
             alert("Login realizado com sucesso!");
             window.location.href = "../telaPrincipal/tela.html";
+        } else {
             alert("Nome de usuário ou senha incorretos!");
         }
     });

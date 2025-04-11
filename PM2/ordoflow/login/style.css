@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial;
 }
 
 body {
@@ -90,7 +91,7 @@ body {
   background-color: white;
   border: 1px solid #fff;
   color: rgb(0, 0, 0);
-  padding: 10px 20px;
+  padding: 5px 20px;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
