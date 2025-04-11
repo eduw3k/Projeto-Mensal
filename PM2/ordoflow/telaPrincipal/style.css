@@ -1,8 +1,10 @@
 body {
     background-color: #4a4a4a;
+    font-family: Arial;
 }
 .navbar {
     background-color: #1c1624;
+    font-family: Arial;
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -26,7 +28,7 @@ body {
 .navbar-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 50px;
 }
 
 .navbar-links li {
@@ -35,7 +37,7 @@ body {
 
 .navbar-links a {
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1rem;
     transition: color 0.3s ease;
 }
@@ -53,7 +55,7 @@ body {
 }
 
 .navbar-profile img:hover {
-    transform: scale(1.1);
+    transform: scale(1.5);
 }
 
 .board {
@@ -85,15 +87,33 @@ body {
     cursor: pointer;
 }
 
+.delete-list {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
 .card {
     background-color: #3c3c3c;
+    margin: 4px 0;
     color: white;
     padding: 10px;
     border-radius: 5px;
+    align-items: center;
     width: 100%;
     margin-bottom: 10px;
-    text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.delete-card {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 220px;
+    color: rgb(255, 255, 255);
 }
 
 .add-card {
@@ -110,4 +130,9 @@ body {
 
 .add-card:hover {
     background-color: #ddd;
+}
+
+.card-content {
+    flex-grow: 1;
+    outline: none;
 }
