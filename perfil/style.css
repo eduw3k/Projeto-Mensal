@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #444;
+    color: white;
+  }
+  .cabecalho {
+    background-color: #1c1624;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  } 
+  .menu a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  .icone-perfil img {
+    width: 30px;
+  }
+  .conteudo {
+    display: flex;
+    padding: 20px;
+  }
+  .lateral {
+    background-color: #1c1624;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    border-radius: 8px;
+  }
+  .avatar {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+  .quadros {
+    display: flex;
+    gap: 15px;
+    margin-left: 30px;
+    flex-wrap: wrap;
+  } 
+  .quadro {
+    background-color: #ccc;
+    color: black;
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
