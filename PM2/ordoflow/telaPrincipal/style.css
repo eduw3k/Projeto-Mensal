@@ -136,3 +136,33 @@ body {
     flex-grow: 1;
     outline: none;
 }
+
+
+
+.board-perfil {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .list {
+    background: #ccc;
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .add-quadro {
+    background: #444;
+    color: white;
+    cursor: pointer;
+    justify-content: center;
+    font-size: 16px;
+  }

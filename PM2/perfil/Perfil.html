@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordoflow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cabecalho">
+    <h1><a class="logo" href="telaPrincipal/tela.html">Ordoflow</a></h1>
+    <div class="menu">
+      <a href="#">Quadros</a>
+      <a href="#">Listas</a>
+    </div>
+    <div class="avatar-nav">
+      <a href="Perfil.html"><img src="avatar.png" alt="Perfil" class="avata-nav"></a>
+    </div>
+  </div>
+
+  <div class="conteudo">
+
+    <div class="lateral">
+      <img src="avatar.png" alt="Avatar" class="avatar">
+      <p>user.email@gmail.com</p>
+    </div>
+
+    <div class="board-perfil">
+      <div class="list">Quadro 1</div>
+      <div class="list">Quadro 2</div>
+      <div class="list">Quadro 3</div>
+    </div>
+  </div>
+
+  <script>
+    function carregarQuadros() {
+      const container = document.querySelector(".board-perfil");
+      container.innerHTML = "";
+  
+      const quadros = JSON.parse(localStorage.getItem("quadros")) || [];
+  
+      if (quadros.length === 0) {
+        container.innerHTML = "<p>Nenhum quadro criado ainda.</p>";
+        return;
+      }
+  
+      quadros.forEach((nome, index) => {
+        const quadroDiv = document.createElement("div");
+        quadroDiv.className = "list";
+  
+        const link = document.createElement("a");
+        link.href = `../telaPrincipal/tela.html?quadro=${encodeURIComponent(nome)}`;
+        link.textContent = nome;
+        link.style.marginRight = "10px";
+        link.style.textDecoration = "none";
+        link.style.color = "white";
+  
+        const btn = document.createElement("button");
+        btn.textContent = "🗑️";
+        btn.title = "Excluir";
+        btn.style.background = "transparent";
+        btn.style.border = "none";
+        btn.style.cursor = "pointer";
+        btn.style.color = "red";
+        btn.onclick = () => removerQuadro(index);
+  
+        quadroDiv.appendChild(link);
+        quadroDiv.appendChild(btn);
+        container.appendChild(quadroDiv);
+      });
+    }
+  
+    function removerQuadro(index) {
+      let quadros = JSON.parse(localStorage.getItem("quadros")) || [];
+      quadros.splice(index, 1);
+      localStorage.setItem("quadros", JSON.stringify(quadros));
+      carregarQuadros();
+    }
+  
+    window.onload = carregarQuadros;
+  </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,21 +8,85 @@
     <title>Ordoflow</title>
 </head>
 <body>
-    <!DOCTYPE html>
 <html lang="en">
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-title">OrdoFlow</div>
             <ul class="navbar-links">
-                <li><a href="#">Quadros</a></li>
+                <li><a href="telaPrincipal/tela.html">Quadros</a></li>
                 <li><a href="#" id="create-list">Listas</a></li>
             </ul>
             <div class="navbar-profile">
-                <a href="#"><img src="https://e7.pngegg.com/pngimages/507/702/png-clipart-profile-icon-simple-user-icon-icons-logos-emojis-users.png" alt="Perfil"></a>
+                <a href="perfil/Perfil.html"><img src="https://e7.pngegg.com/pngimages/507/702/png-clipart-profile-icon-simple-user-icon-icons-logos-emojis-users.png" alt="Perfil"></a>
             </div>
         </div>
     </nav>
-    <div class="board">
+
+    
+        <div class="list add-quadro" onclick="abrirPromptCriarQuadro()">+ Criar novo quadro</div>
+
+        <script>
+            function carregarQuadros() {
+              const container = document.querySelector(".board-perfil");
+              container.innerHTML = "";
+          
+              // Botão "Criar novo quadro"
+              const botaoCriar = document.createElement("div");
+              botaoCriar.className = "list add-quadro";
+              botaoCriar.textContent = "+ Criar novo quadro";
+              botaoCriar.onclick = abrirPromptCriarQuadro;
+              container.appendChild(botaoCriar);
+          
+              const quadros = JSON.parse(localStorage.getItem("quadros")) || [];
+          
+              if (quadros.length === 0) return;
+          
+              quadros.forEach((nome, index) => {
+                const quadroDiv = document.createElement("div");
+                quadroDiv.className = "list";
+          
+                const link = document.createElement("a");
+                link.href = `../telaPrincipal/tela.html?quadro=${encodeURIComponent(nome)}`;
+                link.textContent = nome;
+                link.style.marginRight = "10px";
+                link.style.textDecoration = "none";
+                link.style.color = "white";
+          
+                const btn = document.createElement("button");
+                btn.textContent = "🗑️";
+                btn.title = "Excluir";
+                btn.style.background = "transparent";
+                btn.style.border = "none";
+                btn.style.cursor = "pointer";
+                btn.style.color = "red";
+                btn.onclick = () => removerQuadro(index);
+          
+                quadroDiv.appendChild(link);
+                quadroDiv.appendChild(btn);
+                container.appendChild(quadroDiv);
+              });
+            }
+          
+            function abrirPromptCriarQuadro() {
+              const nome = prompt("Digite o nome do novo quadro:");
+              if (!nome || nome.trim() === "") return;
+          
+              let quadros = JSON.parse(localStorage.getItem("quadros")) || [];
+              quadros.push(nome);
+              localStorage.setItem("quadros", JSON.stringify(quadros));
+              carregarQuadros();
+            }
+          
+            function removerQuadro(index) {
+              let quadros = JSON.parse(localStorage.getItem("quadros")) || [];
+              quadros.splice(index, 1);
+              localStorage.setItem("quadros", JSON.stringify(quadros));
+              carregarQuadros();
+            }
+          
+            window.onload = carregarQuadros;
+          </script>
+
     </div>
 </body>
 </html>
