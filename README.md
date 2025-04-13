@@ -18,6 +18,6 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 * **Eduardo Gabriel dos Santos Silva RA506798** - *atualizar oq fez* 
 * **Paulo Vicente Kushino RA506784** - *atualizar oq fez*
 * **Lucas Avancini Mendonça RA506855** - *atualizar oq fez*
-* **Nícollas Montemezzo Alencar RA506825** - *atualizar oq fez*
+* **Nícollas Montemezzo Alencar RA506825** - *Testando Quadros Funcionais na Tela Principal*
 
 Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
