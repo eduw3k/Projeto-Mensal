@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <script src="../js/cadastro.js"></script>
+    <title>OrdoFlow-Cadastro</title>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Cadastro OrdoFlow</h2>
+      
+        <form id="cadastro-form">
+          <label for="username">Nome de usuário: </label>
+          <input type="text" id="username" name="username" required>
+        
+          <label for="email">Email: </label>
+          <input type="text" id="email" name="email" required>
+        
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" required>
+        
+          <label for="confirm-password">Confirmar senha:</label>
+          <input type="password" id="confirm-password" name="confirm-password" required>
+        
+          <p id="error-message" style="color: red; display: none;">As senhas não coincidem.</p>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+  
+        <hr class="divider">
+  
+      </div>
+</body>
+</html>
