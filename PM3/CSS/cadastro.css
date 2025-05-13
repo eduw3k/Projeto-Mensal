@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #4a4a4a;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background-color: #1c1624;
+  padding: 40px;
+  border-radius: 10px;
+  color: white;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-box label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-box .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.login-box .actions a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #fff;
+  color: #1c1624;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 20px 0;
+}
+
+.create-account a{
+  background-color: #007bff;
+  color: white; 
+  border: none; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem; 
+  cursor: pointer; 
+}
+
+.create-account:hover {
+  background-color: #0056b3; 
+  color: white; 
+}
