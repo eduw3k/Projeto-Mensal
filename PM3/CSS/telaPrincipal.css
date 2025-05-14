@@ -25,18 +25,6 @@ body {
     font-weight: bold;
 }
 
-.navbar-profile img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.navbar-profile img:hover {
-    transform: scale(1.5);
-}
-
 .board {
     display: flex;
     gap: 20px;
