@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>OrdoFlow</title>
+  <link rel="stylesheet" href="ordoFlow.css">
+  <script defer src="ordoFlow.js"></script>
+</head>
+<body>
+  <h1>OrdoFlow - Gerenciador de Tarefas 2.0</h1>
+
+  <!--controles de quadros-->
+  <section id="board-controls">
+    <h2>Quadros</h2>
+    <form id="board-form">
+      <input type="text" id="board-name" placeholder="Nome do Quadro" required>
+      <input type="text" id="board-description" placeholder="Descrição">
+      <input type="text" id="board-color" placeholder="Cor (hexadecimal)">
+      <input type="number" id="board-id" placeholder="ID (para editar opcional)">
+      <button type="submit">Salvar Quadro</button>
+    </form>
+    <ul id="boards-dropdown"></ul>
+  </section>
+
+  <!--controles de colunas-->
+  <section id="column-controls">
+    <h2>Colunas</h2>
+    <form id="column-form">
+      <input type="text" id="column-title" placeholder="Título da Coluna" required>
+      <input type="number" id="column-board-id" placeholder="ID do Quadro" required>
+      <input type="number" id="column-id" placeholder="ID da Coluna (opcional)">
+      <button type="submit">Salvar Coluna</button>
+    </form>
+  </section>
+
+  <!--controles de tarefas-->
+  <section id="task-controls">
+    <h2>Tarefas</h2>
+    <form id="task-form">
+      <input type="text" id="task-title" placeholder="Título da Tarefa" required>
+      <input type="text" id="task-description" placeholder="Descrição da Tarefa">
+      <input type="number" id="task-column-id" placeholder="ID da Coluna" required>
+      <input type="number" id="task-id" placeholder="ID da Tarefa (opcional)">
+      <button type="submit">Salvar Tarefa</button>
+    </form>
+    <form id="delete-task-form">
+      <input type="number" id="delete-task-id" placeholder="ID da Tarefa para deletar" required>
+      <button type="submit">Deletar Tarefa</button>
+    </form>
+  </section>
+
+  <!--controles de busca-->
+  <section id="fetch-controls">
+    <h2>Buscar</h2>
+    <form id="get-board-form">
+      <input type="number" id="get-board-id" placeholder="ID do Quadro">
+      <button type="submit">Buscar Quadro</button>
+    </form>
+    <form id="get-complete-board-form">
+      <input type="number" id="get-complete-board-id" placeholder="ID do Quadro Completo">
+      <button type="submit">Buscar Quadro Completo</button>
+    </form>
+    <button id="get-all-boards">Listar Todos os Quadros</button>
+    <pre id="result"></pre>
+  </section>
+
+  <!--área que o board completo é renderizado-->
+  <section class="board"></section>
+</body>
+</html>
