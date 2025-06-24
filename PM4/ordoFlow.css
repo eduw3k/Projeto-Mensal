@@ -1,0 +1,229 @@
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* BACKGROUND E FONTE */
+body {
+  background-color: #4a4a4a;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  padding: 20px;
+}
+
+/* TÍTULO PRINCIPAL */
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* === SECTION: Quadros === */
+#board-controls {
+  margin-bottom: 30px;
+}
+
+/* Formulário de quadros */
+#board-form input,
+#board-form button {
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+}
+#board-form input {
+  min-width: 150px;
+}
+#board-form button {
+  background-color: #1c1624;
+  color: #fff;
+  cursor: pointer;
+}
+#board-form button:hover {
+  background-color: #322a44;
+}
+
+/* Lista de quadros */
+#boards-dropdown {
+  list-style: none;
+  margin-top: 10px;
+}
+#boards-dropdown li {
+  margin-bottom: 8px;
+}
+#boards-dropdown li button {
+  width: 100%;
+  text-align: left;
+  background-color: #3e3c3c;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#boards-dropdown li button:hover {
+  background-color: #322a44;
+}
+
+/* === SECTION: Colunas === */
+#column-controls {
+  margin-bottom: 30px;
+}
+#column-form input,
+#column-form button {
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+}
+#column-form button {
+  background-color: #1c1624;
+  color: #fff;
+  cursor: pointer;
+}
+#column-form button:hover {
+  background-color: #322a44;
+}
+
+/* === SECTION: Tarefas === */
+#task-controls {
+  margin-bottom: 30px;
+}
+#task-form input,
+#task-form button,
+#delete-task-form input,
+#delete-task-form button {
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+}
+#task-form button,
+#delete-task-form button {
+  background-color: #1c1624;
+  color: #fff;
+  cursor: pointer;
+}
+#task-form button:hover,
+#delete-task-form button:hover {
+  background-color: #322a44;
+}
+
+/* === SECTION: Busca === */
+#fetch-controls {
+  margin-bottom: 30px;
+}
+#fetch-controls form,
+#fetch-controls button {
+  margin-bottom: 10px;
+}
+#fetch-controls input,
+#fetch-controls button {
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+}
+#fetch-controls button {
+  background-color: #1c1624;
+  color: #fff;
+  cursor: pointer;
+}
+#fetch-controls button:hover {
+  background-color: #322a44;
+}
+/* Área de resultado JSON */
+#result {
+  background-color: #3e3c3c;
+  padding: 15px;
+  border-radius: 6px;
+  max-height: 200px;
+  overflow: auto;
+  font-family: monospace;
+  margin-top: 10px;
+}
+
+/* === BOARD RENDER === */
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Cada coluna */
+.list {
+  flex-shrink: 0;
+  background-color: #3e3c3c;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Título da coluna */
+.list h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Tarefas dentro da coluna */
+.card {
+  background-color: #4a4a4a;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Botão “Criar tarefa” dentro de cada coluna */
+.list > button {
+  background-color: #fff;
+  color: #1c1624;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 100%;
+}
+.list > button:hover {
+  background-color: #ddd;
+}
+
+/* Botão flutuante “+ Nova Lista” */
+.floating-add-list {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #1c1624;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.floating-add-list:hover {
+  background-color: #322a44;
+}
