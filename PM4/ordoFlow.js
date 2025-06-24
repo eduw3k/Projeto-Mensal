@@ -9,13 +9,19 @@ document.getElementById('board-form').addEventListener('submit', async e => {
     Description: document.getElementById('board-description').value,
     HexadecimalColor: document.getElementById('board-color').value
   };
-  const res = await fetch(`${apiUrl}/CreateOrUpdateBoard`, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(payload)
-  });
-  showRaw(await res.json());
-  loadBoards(); //atualiza dropdown
+  try {
+    const res = await fetch(`${apiUrl}/CreateOrUpdateBoard`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    showRaw(data);
+    alert('Quadro salvo com sucesso!');
+  } catch (err) {
+    alert('Erro ao salvar quadro.');
+    console.error(err);
+  }
 });
 
 //exibir JSON bruto em #result
@@ -29,7 +35,7 @@ async function loadBoards() {
   dropdown.innerHTML = '';
 
   try {
-    const res = await fetch(`${apiUrl}/GetAllBoards`);
+    const res = await fetch(`${apiUrl}/GetBoards`);
     const boards = await res.json();
 
     boards.forEach(board => {
@@ -42,6 +48,7 @@ async function loadBoards() {
     });
 
   } catch (err) {
+    alert('Erro ao carregar quadros.');
     console.error('Erro ao carregar quadros:', err);
   }
 }
@@ -60,8 +67,11 @@ document.getElementById('column-form').addEventListener('submit', async e => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    showRaw(await res.json());
+    const data = await res.json();
+    showRaw(data);
+    alert('Coluna salva com sucesso!');
   } catch (err) {
+    alert('Erro ao criar/atualizar coluna.');
     console.error('Erro ao criar/atualizar coluna:', err);
   }
 });
@@ -81,8 +91,11 @@ document.getElementById('task-form').addEventListener('submit', async e => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    showRaw(await res.json());
+    const data = await res.json();
+    showRaw(data);
+    alert('Tarefa salva com sucesso!');
   } catch (err) {
+    alert('Erro ao criar/atualizar tarefa.');
     console.error('Erro ao criar/atualizar tarefa:', err);
   }
 });
@@ -92,9 +105,18 @@ document.getElementById('delete-task-form').addEventListener('submit', async e =
   e.preventDefault();
   const id = document.getElementById('delete-task-id').value;
   try {
-    const res = await fetch(`${apiUrl}/DeleteTask/${id}`, { method: 'DELETE' });
-    showRaw(await res.json());
+    const res = await fetch(`${apiUrl}/DeleteTask?TaskId=${id}`, { method: 'DELETE' });
+    if (res.ok) {
+      alert('Tarefa deletada com sucesso!');
+      // opcional: limpar resultado anterior
+      document.getElementById('result').textContent = '';
+    } else {
+      const errData = await res.json();
+      showRaw(errData);
+      alert('Erro ao deletar tarefa.');
+    }
   } catch (err) {
+    alert('Erro ao deletar tarefa.');
     console.error('Erro ao deletar tarefa:', err);
   }
 });
@@ -104,9 +126,12 @@ document.getElementById('get-board-form').addEventListener('submit', async e => 
   e.preventDefault();
   const id = document.getElementById('get-board-id').value;
   try {
-    const res = await fetch(`${apiUrl}/GetBoardById/${id}`);
-    showRaw(await res.json());
+    const res = await fetch(`${apiUrl}/GetBoardById?BoardId=${id}`);
+    const data = await res.json();
+    showRaw(data);
+    alert('Quadro encontrado!');
   } catch (err) {
+    alert('Erro ao buscar board.');
     console.error('Erro ao buscar board:', err);
   }
 });
@@ -116,9 +141,12 @@ document.getElementById('get-complete-board-form').addEventListener('submit', as
   e.preventDefault();
   const id = document.getElementById('get-complete-board-id').value;
   try {
-    const res = await fetch(`${apiUrl}/GetCompleteBoardById/${id}`);
-    showRaw(await res.json());
+    const res = await fetch(`${apiUrl}/GetCompleteBoard?BoardId=${id}`);
+    const data = await res.json();
+    showRaw(data);
+    alert('Quadro completo carregado!');
   } catch (err) {
+    alert('Erro ao buscar quadro completo.');
     console.error('Erro ao buscar board completo:', err);
   }
 });
@@ -126,7 +154,7 @@ document.getElementById('get-complete-board-form').addEventListener('submit', as
 //renderizar board completo
 async function renderBoard(boardId) {
   try {
-    const res = await fetch(`${apiUrl}/GetCompleteBoardById/${boardId}`);
+    const res = await fetch(`${apiUrl}/GetCompleteBoard?BoardId=${boardId}`);
     const data = await res.json();
     const boardDiv = document.querySelector('.board');
     boardDiv.innerHTML = '';
@@ -151,6 +179,7 @@ async function renderBoard(boardId) {
     });
 
   } catch (err) {
+    alert('Erro ao renderizar board.');
     console.error('Erro ao renderizar board:', err);
   }
 }
@@ -159,18 +188,38 @@ async function renderBoard(boardId) {
 async function createTask(columnId, boardId) {
   const title = prompt('Título da tarefa:');
   if (!title) return;
-  await fetch(`${apiUrl}/CreateOrUpdateTask`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ Id: Date.now(), ColumnId: columnId, Title: title, Description: '' })
-  });
-  renderBoard(boardId);
+  try {
+    await fetch(`${apiUrl}/CreateOrUpdateTask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ Id: Date.now(), ColumnId: columnId, Title: title, Description: '' })
+    });
+    alert('Tarefa criada com sucesso!');
+    renderBoard(boardId);
+  } catch (err) {
+    alert('Erro ao criar tarefa.');
+    console.error('Erro ao criar tarefa:', err);
+  }
 }
 
 async function deleteTask(taskId, boardId) {
-  await fetch(`${apiUrl}/DeleteTask/${taskId}`, { method: 'DELETE' });
-  renderBoard(boardId);
+  try {
+    const res = await fetch(`${apiUrl}/DeleteTask?TaskId=${taskId}`, { method: 'DELETE' });
+    if (res.ok) {
+      alert('Tarefa deletada com sucesso!');
+      renderBoard(boardId);
+    } else {
+      const errData = await res.json();
+      showRaw(errData);
+      alert('Erro ao deletar tarefa.');
+    }
+  } catch (err) {
+    alert('Erro ao deletar tarefa.');
+    console.error('Erro ao deletar tarefa:', err);
+  }
 }
 
-//inicialização
-document.addEventListener('DOMContentLoaded', loadBoards);
+//só carrega se clicar em "Listar Todos os Quadros"
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('get-all-boards').addEventListener('click', loadBoards);
+});
