@@ -2,13 +2,29 @@
 
 Objetivo: Desenvolvimento do sistema de gestão Kanban similiar ao "Trello". 
 
-## 🛠️ Construído com
+## 🧩 Projetos Realizados
 
-Implementação em HTML + CSS + JS
+Este projeto foi desenvolvido em **etapas complementares** ao longo de diferentes entregas:
+
+## 🛠️ PM1, PM2 e PM3 - Implementação com Local Storage
+
+HTML + CSS + JS
 
 * [Balsamiq](https://balsamiq.com/) - Protótipo de Baixa Fidelidade
 * [Figma](https://www.figma.com/pt-br/downloads/) - Protótipo de Alta Fidelidade
 * [Lucidchart](https://www.lucidchart.com/pages/pt) - Diagrama de Caso de Uso
+
+## 🖥️ PM4 – Implementação com API REST Trello
+
+Na fase final do projeto, foi implementada a **integração completa com a API Trello fornecida**, utilizando JavaScript puro e requisições assíncronas `fetch()`.
+
+## 📌 Observações:
+- A aplicação do PM4 **não possui autenticação** (login/cadastro removidos), pois a API não exige tokens de acesso.
+- O uso de `localStorage` foi removido; toda a manipulação de dados ocorre via requisições HTTP assíncronas.
+- Interface 100% funcional baseada em uma **única tela Kanban**, onde é possível:
+  - Criar e editar quadros, colunas e tarefas
+  - Visualizar quadros completos com estrutura hierárquica
+  - Remover tarefas individualmente
 
 ## ✒️ Autores
 
