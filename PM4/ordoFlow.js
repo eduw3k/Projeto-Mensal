@@ -220,6 +220,11 @@ async function deleteTask(taskId, boardId) {
 }
 
 //só carrega se clicar em "Listar Todos os Quadros"
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('get-all-boards').addEventListener('click', loadBoards);
+
+  // Limpar a lista de quadros
+    document.getElementById('clear-boards-list').addEventListener('click', () => {
+    document.getElementById('boards-dropdown').innerHTML = '';
+  });
 });
